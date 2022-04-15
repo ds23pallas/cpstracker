@@ -18,9 +18,9 @@ import org.slf4j.Logger;
 public class CPSTrackerEventHandler {
 
     private static final Logger LOGGER = LogUtils.getLogger();
-
     private static CPSTrackerEventHandler cpsTrackerEventHandler;
 
+    //positions of numbers
     private int row1 = 20;
     private int row2 = 42;
     private int row3 = 64;
@@ -29,15 +29,16 @@ public class CPSTrackerEventHandler {
     private int col2 = 50;
     private int col3 = 80;
 
-
-    int onColor = 0xFFFFFF;
-    int offColor = 0xc0c0c0;
-    int fillColor = 0x80A0A0A0;
+    //colors for rendering
+    private int onColor = 0xFFFFFF;
+    private int offColor = 0xc0c0c0;
+    private int fillColor = 0x80A0A0A0;
     private boolean aIsDown, wIsDown, sIsDown, dIsDown, lIsDown = false;
 
-    MouseHandler m = Minecraft.getInstance().mouseHandler;
-    Font f = Minecraft.getInstance().font;
-    long window = Minecraft.getInstance().getWindow().getWindow();
+    //caches of minecraft stuff
+    private MouseHandler m = Minecraft.getInstance().mouseHandler;
+    private Font f = Minecraft.getInstance().font;
+    private long window = Minecraft.getInstance().getWindow().getWindow();
 
     CPSTrackerEventHandler() {
         LOGGER.info("In key handler, registering events");
@@ -48,7 +49,6 @@ public class CPSTrackerEventHandler {
     public static void init() {
         cpsTrackerEventHandler = new CPSTrackerEventHandler();
     }
-
 
     private void onRenderGUI(RenderGameOverlayEvent e) {
         PoseStack matrix = e.getMatrixStack();
