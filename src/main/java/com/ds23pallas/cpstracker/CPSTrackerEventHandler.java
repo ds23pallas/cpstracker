@@ -68,17 +68,11 @@ public class CPSTrackerEventHandler {
     }
 
     private void onTick(TickEvent.ClientTickEvent e) {
-        boolean mouseClickHandled = false;
         if (e.side == LogicalSide.CLIENT) {
             aIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_A);
             sIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_S);
             dIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_D);
             wIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_W);
-
-            if(m.isLeftPressed() && !mouseClickHandled) {
-                LOGGER.info("Mouse pressed " + System.currentTimeMillis());
-                mouseClickHandled = true;
-            }
         }
     }
 
