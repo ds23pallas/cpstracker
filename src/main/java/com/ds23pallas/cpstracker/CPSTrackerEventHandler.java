@@ -61,7 +61,8 @@ public class CPSTrackerEventHandler {
         drawString(matrix,"LMB",col1,row3,(m.isLeftPressed()?onColor:offColor));
         drawString(matrix,"RMB",col3,row3,(m.isRightPressed()?onColor:offColor));
 
-        drawString(matrix, "CPS:" + Integer.toString(CPSTracker.clickTracker.getCount()),col1,row4,onColor,false);
+        drawString(matrix, "CPS:" + Integer.toString(CPSTracker.leftClickTracker.getCount()),col1,row4,onColor,false);
+        drawString(matrix, "CPSR:" + Integer.toString(CPSTracker.rightClickTracker.getCount()),col3,row4,onColor,false);
 
     }
 

@@ -13,10 +13,12 @@ import org.slf4j.Logger;
 @Mod("cpstracker")
 public class CPSTracker {
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static ClickTracker clickTracker;
+    public static ClickTracker leftClickTracker;
+    public static ClickTracker rightClickTracker;
 
     public CPSTracker() {
-        clickTracker = new ClickTracker();
+        leftClickTracker = new ClickTracker();
+        rightClickTracker = new ClickTracker();
         final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(this::clientSetup);
         //Mouseclick tracker is bound outside of main event handler
@@ -31,8 +33,11 @@ public class CPSTracker {
     @SubscribeEvent
     public void playerEvent(PlayerInteractEvent e) {
         //TODO - fix clicking on blocks
-        if(e.getClass()==PlayerInteractEvent.LeftClickEmpty.class) {
-            clickTracker.addClick();
+        if(e.getClass()==PlayerInteractEvent.LeftClickEmpty.class || e.getClass()==PlayerInteractEvent.LeftClickBlock.class) {
+            leftClickTracker.addClick();
+        }
+        if(e.getClass()==PlayerInteractEvent.RightClickEmpty.class || e.getClass()==PlayerInteractEvent.RightClickBlock.class) {
+            rightClickTracker.addClick();
         }
     }
 
