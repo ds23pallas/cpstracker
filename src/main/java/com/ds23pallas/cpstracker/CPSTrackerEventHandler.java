@@ -25,6 +25,7 @@ public class CPSTrackerEventHandler {
     private int row2 = 40;
     private int row3 = 64;
     private int row4 = 86;
+    private int row5 = 108;
     private int col1 = 10;
     private int col2 = 30;
     private int col3 = 50;
@@ -33,7 +34,7 @@ public class CPSTrackerEventHandler {
     private int onColor = 0xea03ff;
     private int offColor = 0x27ff03;
     private int fillColor = 0x2803cdff;
-    private boolean aIsDown, wIsDown, sIsDown, dIsDown, lIsDown = false;
+    private boolean aIsDown, wIsDown, sIsDown, dIsDown, spaceIsDown = false;
 
     //caches of minecraft stuff
     private MouseHandler m = Minecraft.getInstance().mouseHandler;
@@ -57,9 +58,10 @@ public class CPSTrackerEventHandler {
         drawString(matrix,"A",col1,row2,(aIsDown?onColor:offColor));
         drawString(matrix,"S",col2,row2,(sIsDown?onColor:offColor));
         drawString(matrix,"D",col3,row2,(dIsDown?onColor:offColor));
+        drawString(matrix,"space",col1,row5,45,20,(spaceIsDown?onColor:offColor),true);
 
-        drawString(matrix,"LMB",col1,row3,(m.isLeftPressed()?onColor:offColor));
-        drawString(matrix,"RMB",col3,row3,(m.isRightPressed()?onColor:offColor));
+        drawString(matrix,"LMB",col1,row3,30,20,(m.isLeftPressed()?onColor:offColor),true);
+        drawString(matrix,"RMB",col3,row3,30,20,(m.isRightPressed()?onColor:offColor),true);
 
         drawString(matrix, "CPS:" + Integer.toString(CPSTracker.leftClickTracker.getCount()),col1,row4,offColor,false);
         drawString(matrix, "CPSR:" + Integer.toString(CPSTracker.rightClickTracker.getCount()),col3,row4,offColor,false);
@@ -72,6 +74,7 @@ public class CPSTrackerEventHandler {
             sIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_S);
             dIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_D);
             wIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_W);
+            spaceIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_SPACE);
         }
     }
 
@@ -81,8 +84,11 @@ public class CPSTrackerEventHandler {
     }
 
     private void drawString(PoseStack matrix, String text, int x, int y, int color, boolean drawBox) {
-        f.draw(matrix,text,x+7,y+7,color);
-        if(drawBox) GuiComponent.fill(matrix,x,y,x+20,y+20,fillColor);
+        drawString(matrix,text,x,y,20,20,color,drawBox);
     }
 
+    private void drawString(PoseStack matrix, String text, int x, int y,int xOffset,int yOffset, int color, boolean drawBox) {
+        f.draw(matrix,text,x+7,y+7,color);
+        if(drawBox) GuiComponent.fill(matrix,x,y,x+xOffset,y+yOffset,fillColor);
+    }
 }
