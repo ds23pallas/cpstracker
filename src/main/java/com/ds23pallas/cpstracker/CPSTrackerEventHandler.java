@@ -32,7 +32,7 @@ public class CPSTrackerEventHandler {
     //colors for rendering
     private int onColor = 0xea03ff;
     private int offColor = 0x27ff03;
-    private int fillColor = 0x3203cdff;
+    private int fillColor = 0x2803cdff;
     private boolean aIsDown, wIsDown, sIsDown, dIsDown, lIsDown = false;
 
     //caches of minecraft stuff
