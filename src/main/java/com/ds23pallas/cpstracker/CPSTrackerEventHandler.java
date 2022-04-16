@@ -26,15 +26,15 @@ public class CPSTrackerEventHandler {
     private int row3 = 64;
     private int row4 = 86;
     private int row5 = 108;
+    private int row12 = 230;
     private int col1 = 10;
-    private int col2 = 30;
-    private int col3 = 50;
-
-    //colors for rendering
+    private int col2 = 28;
+    private int col3 = 48;
+    private int col4 = 31;
     private int onColor = 0xea03ff;
     private int offColor = 0x27ff03;
     private int fillColor = 0x2803cdff;
-    private boolean aIsDown, wIsDown, sIsDown, dIsDown, spaceIsDown = false;
+    private boolean aIsDown, wIsDown, sIsDown, dIsDown, spaceIsDown, shiftIsDown, controlIsDown = false;
 
     //caches of minecraft stuff
     private MouseHandler m = Minecraft.getInstance().mouseHandler;
@@ -65,7 +65,8 @@ public class CPSTrackerEventHandler {
 
         drawString(matrix, "CPS:" + Integer.toString(CPSTracker.leftClickTracker.getCount()),col1,row4,offColor,false);
         drawString(matrix, "CPSR:" + Integer.toString(CPSTracker.rightClickTracker.getCount()),col3,row4,offColor,false);
-
+        drawString(matrix, "Shift",col3,row12,32,20,(shiftIsDown?onColor:offColor),true);
+        drawString(matrix, "cont",col2,row12,22,20,(controlIsDown?onColor:offColor),true);
     }
 
     private void onTick(TickEvent.ClientTickEvent e) {
@@ -75,6 +76,8 @@ public class CPSTrackerEventHandler {
             dIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_D);
             wIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_W);
             spaceIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_SPACE);
+            shiftIsDown = InputConstants.isKeyDown(window, InputConstants.KEY_LSHIFT);
+            controlIsDown = InputConstants.isKeyDown(window, InputConstants. KEY_LCONTROL);
         }
     }
 
