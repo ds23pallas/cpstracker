@@ -170,12 +170,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "examplemod",
-                "Specification-Vendor"    : "examplemodsareus",
+                "Specification-Title"     : "cpstracker",
+                "Specification-Vendor"    : "pallasf40",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "examplemodsareus",
+                "Implementation-Vendor"   : "pallasf40",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
@@ -198,6 +198,7 @@ publishing {
             url "file://${project.projectDir}/mcmodsrepo"
         }
     }
+
 }
 
 tasks.withType(JavaCompile).configureEach {
