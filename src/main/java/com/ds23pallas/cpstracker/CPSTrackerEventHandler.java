@@ -22,17 +22,17 @@ public class CPSTrackerEventHandler {
 
     //positions of numbers
     private int row1 = 20;
-    private int row2 = 42;
+    private int row2 = 40;
     private int row3 = 64;
     private int row4 = 86;
     private int col1 = 10;
-    private int col2 = 50;
-    private int col3 = 80;
+    private int col2 = 30;
+    private int col3 = 50;
 
     //colors for rendering
-    private int onColor = 0xFFFFFF;
-    private int offColor = 0xc0c0c0;
-    private int fillColor = 0x80A0A0A0;
+    private int onColor = 0xea03ff;
+    private int offColor = 0x27ff03;
+    private int fillColor = 0x3203cdff;
     private boolean aIsDown, wIsDown, sIsDown, dIsDown, lIsDown = false;
 
     //caches of minecraft stuff
@@ -61,8 +61,8 @@ public class CPSTrackerEventHandler {
         drawString(matrix,"LMB",col1,row3,(m.isLeftPressed()?onColor:offColor));
         drawString(matrix,"RMB",col3,row3,(m.isRightPressed()?onColor:offColor));
 
-        drawString(matrix, "CPS:" + Integer.toString(CPSTracker.leftClickTracker.getCount()),col1,row4,onColor,false);
-        drawString(matrix, "CPSR:" + Integer.toString(CPSTracker.rightClickTracker.getCount()),col3,row4,onColor,false);
+        drawString(matrix, "CPS:" + Integer.toString(CPSTracker.leftClickTracker.getCount()),col1,row4,offColor,false);
+        drawString(matrix, "CPSR:" + Integer.toString(CPSTracker.rightClickTracker.getCount()),col3,row4,offColor,false);
 
     }
 
